@@ -64,21 +64,78 @@
 // },1000)
 
 
-const p = new promise ((resolve,reject)=>{
-    let done = true;
-    setTimeout(()=>{
-        if (done){
-            res({name:"royal",age:23})
-        }else{
-            reject("word has not been completed")
-        }
-        //reject()
-    },5000)
-})
-p.then((data)=>{
-    console.log(data.name)
+// const p = new promise ((resolve,reject)=>{
+//     let done = true;
+//     setTimeout(()=>{
+//         if (done){
+//             res({name:"royal",age:23})
+//         }else{
+//             reject("word has not been completed")
+//         }
+//         //reject()
+//     },5000)
+// })
+// p.then((data)=>{
+//     console.log(data.name)
+// }).catch((err)=>{
+//     console.log(err)
+// }).finally(()=>{
+//     console.log("finally back")
+// })
+
+function doDinner(){
+    const p =new Promise((res,rej)=>{
+        let done=true;
+        setTimeout(()=>{
+            if (done){
+                console.log("dinner completed")
+                res(" dinner is completed ")
+            }else{
+                rej(" dinner not completed")
+            }
+        },2000)
+    })
+    return p
+}
+function doHomeWork(){
+    const p =new Promise((res,rej)=>{
+        let done=true;
+        setTimeout(()=>{
+            if (done){
+                console.log("  HomeWork completed")
+                res(" HomeWork is completed ")
+            }else{
+                rej(" HomeWork not completed")
+            }
+        },2000)
+    })
+    return p
+}
+function doExercise(){
+    const p =new Promise((res,rej)=>{
+        let done=true;
+        setTimeout(()=>{
+            if (done){
+                console.log("  Exercise completed")
+                res(" Exercise is completed ")
+            }else{
+                rej(" Exercise not completed")
+            }
+        },2000)
+    })
+    return p
+}
+
+doHomeWork().then((data)=>{
+    console.log(data)
+    return doDinner()
+}).then((data)=>{
+    console.log(data)
+    return doExercise()
+}).then((data)=>{
+    console.log(data)
 }).catch((err)=>{
     console.log(err)
 }).finally(()=>{
-    console.log("finally back")
+    console.log("go to sleep")
 })
